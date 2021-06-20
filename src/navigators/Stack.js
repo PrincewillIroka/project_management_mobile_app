@@ -1,12 +1,13 @@
 import React, {useState, useContext} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, StyleSheet, TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import shortid from 'shortid';
+import Feather from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   Dashboard,
   Calendar,
@@ -16,6 +17,8 @@ import {
   Onboarding,
   Login,
   Register,
+  Profile,
+  Chat
 } from '../screens';
 import {combineData} from '../utils/DataHelper';
 import {AuthContext} from '../context';
@@ -23,33 +26,69 @@ import {AuthContext} from '../context';
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
-function CustomDrawerContent(props) {
+function CustomTabBar(props) {
   const {state, dispatch} = useContext(AuthContext);
-  const [data, setData] = useState({activeNavTab: 'Inbox'});
+  const [data, setData] = useState({activeNavTab: 'Dashboard'});
 
-  const handleNavigation = (route, props) => {
+  const handleNavigation = route => {
     setData(combineData(data, {activeNavTab: route}));
-    props.navigation.navigate(route);
+    props?.navigation.navigate(route);
+  };
+
+  const getColor = title => {
+    let color;
+    if (title === data?.activeNavTab) {
+      color = '#A98B97';
+    } else {
+      color = '#a6a6a6';
+    }
+    return color;
   };
 
   return (
-    <DrawerContentScrollView {...props}>
-      <View style={styles.menuContainer}>
-        <View style={styles.menuItemsContainer}>
-          <Text>Hey</Text>
-        </View>
-      </View>
-    </DrawerContentScrollView>
+    <View style={styles.menuContainer}>
+      <TouchableOpacity
+        style={styles.menuItemsContainer}
+        onPress={() => handleNavigation('Dashboard')}>
+        <Ionicons name="ios-menu" size={32} color={getColor('Dashboard')} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.menuItemsContainer}
+        onPress={() => handleNavigation('Projects')}>
+        <Ionicons
+          name="ios-document-text"
+          size={25}
+          color={getColor('Projects')}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.plusBtnContainer}>
+        <MaterialCommunityIcons name="plus" size={25} color="#fff" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.menuItemsContainer}
+        onPress={() => handleNavigation('Chat')}>
+        <Feather name="send" size={25} color={getColor('Chat')} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.menuItemsContainer}
+        onPress={() => handleNavigation('Profile')}>
+        <MaterialIcons
+          name="account-circle"
+          size={25}
+          color={getColor('Profile')}
+        />
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const BottomStack = () => {
   return (
-    <BottomTab.Navigator>
-      <BottomTab.Screen name="Dashboard" component={Dashboard} />
-      <BottomTab.Screen name="Calendar" component={Calendar} />
+    <BottomTab.Navigator tabBar={props => <CustomTabBar {...props} />}>
+      <BottomTab.Screen name="Dashboard" component={Dashboard} options={{}} />
       <BottomTab.Screen name="Projects" component={Projects} />
-      <BottomTab.Screen name="Reports" component={Reports} />
+      <BottomTab.Screen name="Chat" component={Chat} />
+      <BottomTab.Screen name="Profile" component={Profile} />
     </BottomTab.Navigator>
   );
 };
@@ -70,6 +109,21 @@ const SingleStack = () => {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Reports"
+        component={Reports}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Calendar"
+        component={Calendar}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Tasks"
+        component={Tasks}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -94,69 +148,37 @@ function AppStack() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   menuContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  menuTitleContainer: {
-    borderBottomColor: '#f4f4f4',
-    borderBottomWidth: 1,
-    paddingVertical: 20,
-  },
-  menuTitleText: {
-    color: '#C8342F',
-    fontSize: 20,
-    marginLeft: 25,
-  },
-  menuItemsContainer: {
-    paddingTop: 10,
-    paddingRight: 7,
-  },
-  menuItemWrapper: {
+    justifyContent: 'space-between',
+    height: 80,
+    backgroundColor: '#fff',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 25,
-    paddingRight: 10,
-    paddingVertical: 10,
-    marginBottom: 3,
+    shadowRadius: 2,
+    shadowOffset: {
+      width: 0,
+      height: -3,
+    },
+    shadowColor: '#000000',
+    elevation: 4,
+    marginTop: 1,
+    paddingHorizontal: 25,
+    borderTopStartRadius: 30,
+    borderTopEndRadius: 30,
   },
-  activeMenuItemWrapper: {
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-    backgroundColor: '#FCE8E7',
-  },
-  menuCount: {
+  menuItemsContainer: {},
+  plusBtnContainer: {
+    backgroundColor: '#A98B97',
+    height: 60,
+    width: 60,
+    borderRadius: 50,
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-  menuIcon: {
-    marginRight: 20,
-    width: 22,
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  menuText: {
-    fontSize: 16,
-    marginRight: 'auto',
-  },
-  activeMenuText: {
-    color: '#C8342F',
-  },
-  allLabelsText: {
-    marginTop: 20,
-    marginLeft: 25,
-    fontSize: 15,
-    opacity: 0.6,
-    marginBottom: 15,
   },
 });
 

@@ -7,7 +7,6 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
@@ -15,30 +14,15 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import styles from './profileStyle';
 import appTheme from '../../constants/colors';
 import {AuthContext} from '../../context';
+import {TabScreenHeader} from '../../components';
 
 export function Profile() {
   const {state, dispatch} = useContext(AuthContext);
   const {user} = state;
 
-  const Header = () => {
-    return (
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerTitle}>Profile</Text>
-        <View style={styles.headerRightContainer}>
-          <TouchableOpacity>
-            <Feather name="search" size={22} color="#000" />
-          </TouchableOpacity>
-          <TouchableOpacity style={{marginLeft: 10}}>
-            <Feather name="more-vertical" size={22} color="#000" />
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <TabScreenHeader />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.bodyContent}>
           <View style={styles.profileDetailsSection}>
@@ -97,7 +81,11 @@ export function Profile() {
                 />
                 <Text style={styles.exploreText}>Settings</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.singleExplore, {marginRight: 'auto', marginLeft: '7%'}]}>
+              <TouchableOpacity
+                style={[
+                  styles.singleExplore,
+                  {marginRight: 'auto', marginLeft: '7%'},
+                ]}>
                 <MaterialCommunityIcons
                   name="logout"
                   size={22}

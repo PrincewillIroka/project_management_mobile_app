@@ -1,9 +1,7 @@
 import React, {useState, useContext} from 'react';
-import { View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
@@ -18,8 +16,9 @@ import {
   Login,
   Register,
   Profile,
-  Chat
+  Chat,
 } from '../screens';
+import appTheme from '../constants/colors';
 import {combineData} from '../utils/DataHelper';
 import {AuthContext} from '../context';
 
@@ -38,46 +37,40 @@ function CustomTabBar(props) {
   const getColor = title => {
     let color;
     if (title === data?.activeNavTab) {
-      color = '#A98B97';
+      color = appTheme.PRIMARY_COLOR;
     } else {
-      color = '#a6a6a6';
+      color = appTheme.INACTIVE_COLOR;
     }
     return color;
   };
 
   return (
-    <View style={styles.menuContainer}>
-      <TouchableOpacity
-        style={styles.menuItemsContainer}
-        onPress={() => handleNavigation('Dashboard')}>
-        <Ionicons name="ios-menu" size={32} color={getColor('Dashboard')} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.menuItemsContainer}
-        onPress={() => handleNavigation('Projects')}>
-        <Ionicons
-          name="ios-document-text"
-          size={25}
-          color={getColor('Projects')}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.plusBtnContainer}>
-        <MaterialCommunityIcons name="plus" size={25} color="#fff" />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.menuItemsContainer}
-        onPress={() => handleNavigation('Chat')}>
-        <Feather name="send" size={25} color={getColor('Chat')} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.menuItemsContainer}
-        onPress={() => handleNavigation('Profile')}>
-        <MaterialIcons
-          name="account-circle"
-          size={25}
-          color={getColor('Profile')}
-        />
-      </TouchableOpacity>
+    <View style={styles.menuWrapper}>
+      <View style={styles.menuContainer}>
+        <TouchableOpacity onPress={() => handleNavigation('Dashboard')}>
+          <Ionicons name="ios-menu" size={32} color={getColor('Dashboard')} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleNavigation('Projects')}>
+          <Ionicons
+            name="ios-document-text"
+            size={25}
+            color={getColor('Projects')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.plusBtnContainer}>
+          <MaterialCommunityIcons name="plus" size={25} color="#fff" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleNavigation('Chat')}>
+          <Feather name="send" size={25} color={getColor('Chat')} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleNavigation('Profile')}>
+          <MaterialIcons
+            name="account-circle"
+            size={25}
+            color={getColor('Profile')}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -148,6 +141,9 @@ function AppStack() {
 }
 
 const styles = StyleSheet.create({
+  menuWrapper: {
+    backgroundColor: '#fff',
+  },
   menuContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -169,9 +165,8 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 30,
     borderTopEndRadius: 30,
   },
-  menuItemsContainer: {},
   plusBtnContainer: {
-    backgroundColor: '#A98B97',
+    backgroundColor: appTheme.PRIMARY_COLOR,
     height: 60,
     width: 60,
     borderRadius: 50,

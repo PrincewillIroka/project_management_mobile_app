@@ -2,15 +2,15 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-export function TabScreenHeader() {
+export function TabScreenHeader({leftComponent}) {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerTitle}>Profile</Text>
+      {leftComponent()}
       <View style={styles.headerRightContainer}>
         <TouchableOpacity>
           <Feather name="search" size={22} color="#000" />
         </TouchableOpacity>
-        <TouchableOpacity style={{marginLeft: 10}}>
+        <TouchableOpacity style={{marginLeft: 15}}>
           <Feather name="more-vertical" size={22} color="#000" />
         </TouchableOpacity>
       </View>
@@ -27,10 +27,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     backgroundColor: '#fff',
-  },
-  headerTitle: {
-    fontWeight: 'bold',
-    fontSize: 19,
   },
   headerRightContainer: {
     display: 'flex',

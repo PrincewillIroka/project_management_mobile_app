@@ -5,12 +5,10 @@ import {
   TouchableOpacity,
   SafeAreaView,
   FlatList,
-  ScrollView,
 } from 'react-native';
 import shortid from 'shortid';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './projectStyle';
-import appTheme from '../../constants/colors';
 import {AuthContext} from '../../context';
 import {TabScreenHeader, ProjectCard} from '../../components';
 import {combineData} from '../../utils/DataHelper';
@@ -39,8 +37,9 @@ export function Projects() {
       projectsToRender = projects;
     } else {
       projectsToRender =
-        projects?.filter(project => project.status === activeTab?.toLowerCase()) ||
-        [];
+        projects?.filter(
+          project => project.status === activeTab?.toLowerCase(),
+        ) || [];
     }
 
     return projectsToRender;
@@ -61,7 +60,9 @@ export function Projects() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TabScreenHeader />
+      <TabScreenHeader
+        leftComponent={() => <Text style={styles.headerTitle}>Projects</Text>}
+      />
       <View style={styles.projectsBody}>
         <View style={styles.projectsTabs}>
           {tabs?.map(tab => (

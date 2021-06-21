@@ -22,7 +22,9 @@ export function Profile() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TabScreenHeader />
+      <TabScreenHeader
+        leftComponent={() => <Text style={styles.headerTitle}>Profile</Text>}
+      />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.bodyContent}>
           <View style={styles.profileDetailsSection}>

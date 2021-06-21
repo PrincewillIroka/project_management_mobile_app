@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fafafa',
+  },  
+  headerTitle: {
+    fontWeight: 'bold',
+    fontSize: 19,
   },
   projectsBody: {
     paddingTop: 20,

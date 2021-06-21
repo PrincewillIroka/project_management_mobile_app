@@ -1,4 +1,4 @@
-export const projectState = {
+const projectState = {
   projects: [
     {
       id: 1,
@@ -24,7 +24,7 @@ export const projectState = {
       progress: 35,
       createdAt: 'Jan 13 2021',
       tasks: 24,
-      status: 'ongoing'
+      status: 'ongoing',
     },
     {
       id: 2,
@@ -50,7 +50,7 @@ export const projectState = {
       progress: 28,
       createdAt: 'Jan 17 2021',
       tasks: 24,
-      status: 'completed'
+      status: 'completed',
     },
     {
       id: 3,
@@ -76,7 +76,9 @@ export const projectState = {
       progress: 35,
       createdAt: 'Feb 25 2021',
       tasks: 24,
-      status: 'ongoing'
+      status: 'ongoing',
     },
   ],
 };
+
+export default projectState;

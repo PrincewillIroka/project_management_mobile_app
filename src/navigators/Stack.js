@@ -142,7 +142,7 @@ function AppStack() {
 
 const styles = StyleSheet.create({
   menuWrapper: {
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
   },
   menuContainer: {
     display: 'flex',

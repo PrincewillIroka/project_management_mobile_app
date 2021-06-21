@@ -1,4 +1,4 @@
-export const userState = {
+const contactsState = {
   users: [
     {
       name: 'Mary Houston',
@@ -86,3 +86,5 @@ export const userState = {
     },
   ],
 };
+
+export default contactsState;

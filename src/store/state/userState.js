@@ -1,4 +1,4 @@
-export const userState = {
+const userState = {
   user: {
     name: 'Johnson Donald',
     photo:
@@ -6,3 +6,5 @@ export const userState = {
     designation: 'Lead Designer',
   },
 };
+
+export default userState;

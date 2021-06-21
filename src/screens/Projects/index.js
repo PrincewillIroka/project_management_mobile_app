@@ -7,10 +7,9 @@ import {
   FlatList,
 } from 'react-native';
 import shortid from 'shortid';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './projectStyle';
 import {AuthContext} from '../../context';
-import {TabScreenHeader, ProjectCard} from '../../components';
+import {TabScreenHeader, ProjectCard, EmptyListComponent} from '../../components';
 import {combineData} from '../../utils/DataHelper';
 
 export function Projects() {
@@ -43,15 +42,6 @@ export function Projects() {
     }
 
     return projectsToRender;
-  };
-
-  const EmptyListComponent = () => {
-    return (
-      <View style={styles.emptyListContainer}>
-        <MaterialCommunityIcons name="file" size={120} color="#f4a9a2" />
-        <Text style={styles.emptyListText}>None found</Text>
-      </View>
-    );
   };
 
   const renderProjectInfo = ({item}) => {

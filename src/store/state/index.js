@@ -1,9 +1,13 @@
-import {userState} from './userState';
-import {projectState} from './projectState';
+import userState from './userState';
+import projectsState from './projectsState';
+import contactsState from './contactsState';
+import tasksState from './tasksState';
 
 const initialState = {
   ...userState,
-  ...projectState,
+  ...projectsState,
+  ...contactsState,
+  ...tasksState
 };
 
 export default initialState;

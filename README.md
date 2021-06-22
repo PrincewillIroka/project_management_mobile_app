@@ -8,6 +8,9 @@ https://user-images.githubusercontent.com/26362657/123002066-5c83b000-d3a9-11eb-
 ### Like this project?
 Don't forget to star :star2: this repo.
 
+### Want to support? Buy me a coffee
+<a href="https://www.buymeacoffee.com/princewilliroka"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=xPGLYEr&button_colour=BD5FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"></a>
+
 ### Usage and Setup
 - Clone this repo. Go into the root folder and run *yarn* to install the dependencies.
 - From the terminal, run *yarn start* and *yarn android* or *yarn ios* to execute the app on a device or emulator.

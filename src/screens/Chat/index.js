@@ -13,10 +13,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import shortid from 'shortid';
 import styles from './chatStyle';
-import appTheme from '../../constants/colors';
 import {TabScreenHeader, EmptyListComponent} from '../../components';
 import {AuthContext} from '../../context';
-import {combineData} from '../../utils/DataHelper';
 
 export function Chat({navigation, route}) {
   const selectedContact = route.params;

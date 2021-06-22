@@ -2,6 +2,7 @@ import React, {useReducer} from 'react';
 import {SafeAreaView, StyleSheet, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider as PaperProvider} from 'react-native-paper';
+import {MenuProvider} from 'react-native-popup-menu';
 import AppStack from './navigators/Stack';
 import initialState from './store/state';
 import reducer from './store/reducer';
@@ -18,12 +19,14 @@ const App = () => {
         dispatch,
       }}>
       <PaperProvider>
-        <StatusBar barStyle="light-content" />
-        <SafeAreaView style={styles.areaContainer}>
-          <NavigationContainer ref={navigationRef}>
-            <AppStack />
-          </NavigationContainer>
-        </SafeAreaView>
+        <MenuProvider>
+          <StatusBar barStyle="light-content" />
+          <SafeAreaView style={styles.areaContainer}>
+            <NavigationContainer ref={navigationRef}>
+              <AppStack />
+            </NavigationContainer>
+          </SafeAreaView>
+        </MenuProvider>
       </PaperProvider>
     </AuthContext.Provider>
   );

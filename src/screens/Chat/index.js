@@ -17,7 +17,7 @@ import {TabScreenHeader, EmptyListComponent} from '../../components';
 import {AuthContext} from '../../context';
 
 export function Chat({navigation, route}) {
-  const selectedContact = route.params;
+  const selectedMember = route.params;
   const {state, dispatch} = useContext(AuthContext);
   const [data, setData] = useState({
     messages: [
@@ -61,22 +61,22 @@ export function Chat({navigation, route}) {
     return (
       <View style={styles.chatHeader}>
         <TouchableOpacity
-          onPress={() => handleBackButton('Contacts')}
-          style={styles.selectedContactBackButton}>
+          onPress={() => handleBackButton('Members')}
+          style={styles.selectedMemberBackButton}>
           <Ionicons name="arrow-back-outline" size={25} color="#000" />
         </TouchableOpacity>
         <Image
-          style={styles.selectedContactPhoto}
+          style={styles.selectedMemberPhoto}
           source={{
-            uri: selectedContact?.photo,
+            uri: selectedMember?.photo,
           }}
         />
-        <View style={styles.selectedContactInfo}>
-          <Text style={styles.selectedContactName}>
-            {selectedContact?.name}
+        <View style={styles.selectedMemberInfo}>
+          <Text style={styles.selectedMemberName}>
+            {selectedMember?.name}
           </Text>
-          <Text style={styles.selectedContactLastSeen}>
-            Last seen {selectedContact?.lastSeen}
+          <Text style={styles.selectedMemberLastSeen}>
+            Last seen {selectedMember?.lastSeen}
           </Text>
         </View>
       </View>

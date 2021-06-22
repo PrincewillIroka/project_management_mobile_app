@@ -15,20 +15,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 19,
   },
-  selectedContactBackButton: {
+  selectedMemberBackButton: {
     marginRight: 10,
   },
-  selectedContactPhoto: {
+  selectedMemberPhoto: {
     height: 35,
     width: 35,
     borderRadius: 50,
     marginRight: 10,
   },
-  selectedContactInfo: {
+  selectedMemberInfo: {
     width: 120,
   },
-  selectedContactName: {fontWeight: 'bold'},
-  selectedContactLastSeen: {
+  selectedMemberName: {fontWeight: 'bold'},
+  selectedMemberLastSeen: {
     color: appTheme.INACTIVE_COLOR,
   },
   chatWrapper: {

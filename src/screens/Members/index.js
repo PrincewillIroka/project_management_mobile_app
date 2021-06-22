@@ -9,16 +9,16 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import shortid from 'shortid';
-import styles from './contactsStyle';
+import styles from './membersStyle';
 import appTheme from '../../constants/colors';
 import {TabScreenHeader, EmptyListComponent} from '../../components';
 import {AuthContext} from '../../context';
 import {navigateToNestedRoute} from '../../navigators/RootNavigation';
 import {getScreenParent} from '../../utils/NavigationHelper';
 
-export function Contacts() {
+export function Members() {
   const {state, dispatch} = useContext(AuthContext);
-  const {contacts} = state;
+  const {members} = state;
 
   const handleNavigation = (screen, params) => {
     navigateToNestedRoute(getScreenParent(screen), screen, params);
@@ -27,33 +27,33 @@ export function Contacts() {
   return (
     <SafeAreaView style={styles.container}>
       <TabScreenHeader
-        leftComponent={() => <Text style={styles.headerTitle}>Contacts</Text>}
+        leftComponent={() => <Text style={styles.headerTitle}>Members</Text>}
         isSearchBtnVisible={false}
         isMoreBtnVisible={true}
       />
-      {contacts?.length ? (
+      {members?.length ? (
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.contactsWrapper}>
-            {contacts.map(contact => (
+          <View style={styles.membersWrapper}>
+            {members.map(member => (
               <TouchableOpacity
-                style={styles.singleContact}
-                onPress={() => handleNavigation('Chat', contact)}
+                style={styles.singleMember}
+                onPress={() => handleNavigation('Chat', member)}
                 key={shortid.generate()}>
                 <Image
-                  style={styles.singleContactPhoto}
+                  style={styles.singleMemberPhoto}
                   source={{
-                    uri: contact?.photo,
+                    uri: member?.photo,
                   }}
                 />
-                <View style={styles.singleContactInfo}>
+                <View style={styles.singleMemberInfo}>
                   <Text
-                    style={styles.selectedContactName}
+                    style={styles.selectedMemberName}
                     numberOfLines={1}
                     ellipsizeMode="tail">
-                    {contact?.name}
+                    {member?.name}
                   </Text>
-                  <Text style={styles.selectedContactLastSeen}>
-                    {contact?.designation}
+                  <Text style={styles.selectedMemberLastSeen}>
+                    {member?.designation}
                   </Text>
                 </View>
                 <MaterialCommunityIcons

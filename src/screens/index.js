@@ -8,4 +8,5 @@ export * from './Login';
 export * from './SignUp';
 export * from './Profile';
 export * from './Chat';
-export * from './Contacts';
+export * from './Members';
+export * from './Project';

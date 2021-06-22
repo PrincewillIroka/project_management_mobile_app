@@ -17,7 +17,8 @@ import {
   SignUp,
   Profile,
   Chat,
-  Contacts,
+  Members,
+  Project,
 } from '../screens';
 import appTheme from '../constants/colors';
 import {combineData} from '../utils/DataHelper';
@@ -61,8 +62,8 @@ function CustomTabBar(props) {
         <TouchableOpacity style={styles.plusBtnContainer}>
           <MaterialCommunityIcons name="plus" size={25} color="#fff" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleNavigation('Contacts')}>
-          <Feather name="send" size={25} color={getColor('Contacts')} />
+        <TouchableOpacity onPress={() => handleNavigation('Members')}>
+          <Feather name="send" size={25} color={getColor('Members')} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleNavigation('Profile')}>
           <MaterialIcons
@@ -81,7 +82,7 @@ const BottomStack = () => {
     <BottomTab.Navigator tabBar={props => <CustomTabBar {...props} />}>
       <BottomTab.Screen name="Dashboard" component={Dashboard} options={{}} />
       <BottomTab.Screen name="Projects" component={Projects} />
-      <BottomTab.Screen name="Contacts" component={Contacts} />
+      <BottomTab.Screen name="Members" component={Members} />
       <BottomTab.Screen name="Profile" component={Profile} />
     </BottomTab.Navigator>
   );
@@ -108,6 +109,11 @@ const SingleStack = () => {
       <Stack.Screen
         name="Chat"
         component={Chat}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Project"
+        component={Project}
         options={{headerShown: false}}
       />
       <Stack.Screen

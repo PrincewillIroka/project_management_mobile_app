@@ -5,10 +5,18 @@ import ProgressCircle from 'react-native-progress-circle';
 import shortid from 'shortid';
 import styles from './projectCardStyle';
 import appTheme from '../../../constants/colors';
+import {navigateToNestedRoute} from '../../../navigators/RootNavigation';
+import {getScreenParent} from '../../../utils/NavigationHelper';
 
-export function ProjectCard({project}) {
+export function ProjectCard({project, navigation}) {
+  const handleNavigation = (screen, params) => {
+    navigateToNestedRoute(getScreenParent(screen), screen, params);
+  };
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => handleNavigation('Project', project)}>
       <Text style={styles.projectTitle}>{project?.title}</Text>
       <View style={styles.projectTeamAndProgress}>
         <View>
@@ -55,6 +63,6 @@ export function ProjectCard({project}) {
           <Text style={styles.projectBottomText}>{project?.tasks} Tasks</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

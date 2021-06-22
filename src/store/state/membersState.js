@@ -1,5 +1,5 @@
-const contactsState = {
-  contacts: [
+const membersState = {
+  members: [
     {
       name: 'Mary Houston',
       photo: 'https://images.unsplash.com/photo-1609132718484-cc90df3417f8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODZ8fHByb2ZpbGUlMjBwaG90b3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',designation: 'Lead Designer',
@@ -82,4 +82,4 @@ const contactsState = {
   ],
 };
 
-export default contactsState;
+export default membersState;

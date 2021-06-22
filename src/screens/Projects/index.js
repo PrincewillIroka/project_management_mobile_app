@@ -16,7 +16,7 @@ import {
 } from '../../components';
 import {combineData} from '../../utils/DataHelper';
 
-export function Projects() {
+export function Projects({navigation}) {
   const tabs = ['All', 'Ongoing', 'Completed'];
 
   const {state, dispatch} = useContext(AuthContext);
@@ -49,7 +49,13 @@ export function Projects() {
   };
 
   const renderProjectInfo = ({item}) => {
-    return <ProjectCard project={item} key={shortid.generate()} />;
+    return (
+      <ProjectCard
+        project={item}
+        key={shortid.generate()}
+        navigation={navigation}
+      />
+    );
   };
 
   return (

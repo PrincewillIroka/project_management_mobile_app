@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 19,
   },
-  contactsWrapper: {flex: 1, padding: 16},
-  singleContact: {
+  membersWrapper: {flex: 1, padding: 16},
+  singleMember: {
     backgroundColor: '#fff',
     padding: 10,
     height: 70,
@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  singleContactPhoto: {
+  singleMemberPhoto: {
     height: 50,
     width: 50,
     borderRadius: 10,
     marginRight: 15,
   },
-  singleContactInfo: {
+  singleMemberInfo: {
     width: '65%',
     marginRight: 'auto',
   },

@@ -22,7 +22,7 @@ Don't forget to star :star2: this repo.
 - LinkedIn: [Princewill Iroka](https://www.linkedin.com/in/princewill-iroka/)
 
 ### Credit
-UI designed by 👤 ![Nurency](https://dribbble.com/shots/15225935-Task-Management-App)
+UI designed by 👤 [Nurency](https://dribbble.com/shots/15225935-Task-Management-App)
 
 ### License
 Copyright 2021 **Princewill Iroka** \

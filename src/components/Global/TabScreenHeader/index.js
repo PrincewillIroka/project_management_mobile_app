@@ -41,6 +41,7 @@ export function TabScreenHeader({
                 <TextInput
                   placeholder="Search"
                   style={styles.searchInputField}
+                  placeholderTextColor={appTheme.INACTIVE_COLOR}
                 />
                 <TouchableOpacity onPress={() => toggleSearchField()}>
                   <MaterialIcons name="close" size={20} color={appTheme.INACTIVE_COLOR} />
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingVertical: 10,
     backgroundColor: '#fff',
   },
   headerRightContainer: {

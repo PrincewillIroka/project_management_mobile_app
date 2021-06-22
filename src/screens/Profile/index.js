@@ -16,17 +16,30 @@ import appTheme from '../../constants/colors';
 import {AuthContext} from '../../context';
 import {TabScreenHeader} from '../../components';
 
-export function Profile() {
+export function Profile({navigation}) {
   const {state, dispatch} = useContext(AuthContext);
   const {user} = state;
+
+  const handleBackButton = () => {
+    navigation?.goBack();
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <TabScreenHeader
-        leftComponent={() => <Text style={styles.headerTitle}>Profile</Text>}
+        leftComponent={() => (
+          <View style={styles.leftHeaderWrapper}>
+            <TouchableOpacity
+              onPress={() => handleBackButton('Members')}
+              style={styles.backButton}>
+              <Ionicons name="arrow-back-outline" size={25} color="#000" />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>Profile</Text>
+          </View>
+        )}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.bodyContent}>
+        <View>
           <View style={styles.profileDetailsSection}>
             <View style={styles.profileInfoSection}>
               <View style={styles.statisticsContainer}>

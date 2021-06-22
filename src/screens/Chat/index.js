@@ -62,7 +62,7 @@ export function Chat({navigation, route}) {
       <View style={styles.chatHeader}>
         <TouchableOpacity
           onPress={() => handleBackButton('Members')}
-          style={styles.selectedMemberBackButton}>
+          style={styles.backButton}>
           <Ionicons name="arrow-back-outline" size={25} color="#000" />
         </TouchableOpacity>
         <Image

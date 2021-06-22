@@ -5,10 +5,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fafafa',
-  },  
+  },
   headerTitle: {
     fontWeight: 'bold',
-    fontSize: 19,
+    fontSize: 20,
+  },
+  leftHeaderWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  backButton: {
+    marginRight: 10,
   },
   profileDetailsSection: {
     paddingTop: 40,

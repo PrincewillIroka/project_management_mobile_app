@@ -1,10 +1,9 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   SafeAreaView,
-  FlatList,
   ScrollView,
 } from 'react-native';
 import shortid from 'shortid';
@@ -15,7 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from './dashboardStyle';
 import {AuthContext} from '../../context';
 import {TabScreenHeader, TaskInfo, EmptyListComponent} from '../../components';
-import {combineData, formatCurrentDate} from '../../utils/DataHelper';
+import {formatCurrentDate} from '../../utils/DataHelper';
 import appTheme from '../../constants/colors';
 
 export function Dashboard() {

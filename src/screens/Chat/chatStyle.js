@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 19,
   },
-  selectedMemberBackButton: {
+  backButton: {
     marginRight: 10,
   },
   selectedMemberPhoto: {

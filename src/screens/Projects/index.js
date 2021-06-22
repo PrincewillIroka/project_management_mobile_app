@@ -7,7 +7,7 @@ import {
   FlatList,
 } from 'react-native';
 import shortid from 'shortid';
-import styles from './projectStyle';
+import styles from './projectsStyle';
 import {AuthContext} from '../../context';
 import {
   TabScreenHeader,

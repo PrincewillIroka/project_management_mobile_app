@@ -3,7 +3,7 @@
 
 ### App User Interface
 
-![Mockup](https://imgur.com/WGJiUfX.png)
+![Mockup](https://i.imgur.com/WGJiUfX.mp4)
 
 ### Like this project?
 Don't forget to star :star2: this repo.

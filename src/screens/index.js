@@ -5,6 +5,7 @@ export * from './Reports';
 export * from './Tasks';
 export * from './Onboarding';
 export * from './Login';
-export * from './Register';
+export * from './SignUp';
 export * from './Profile';
 export * from './Chat';
+export * from './Contacts';

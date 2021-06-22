@@ -9,7 +9,11 @@ import {
 import shortid from 'shortid';
 import styles from './projectStyle';
 import {AuthContext} from '../../context';
-import {TabScreenHeader, ProjectCard, EmptyListComponent} from '../../components';
+import {
+  TabScreenHeader,
+  ProjectCard,
+  EmptyListComponent,
+} from '../../components';
 import {combineData} from '../../utils/DataHelper';
 
 export function Projects() {
@@ -52,6 +56,8 @@ export function Projects() {
     <SafeAreaView style={styles.container}>
       <TabScreenHeader
         leftComponent={() => <Text style={styles.headerTitle}>Projects</Text>}
+        isSearchBtnVisible={true}
+        isMoreBtnVisible={true}
       />
       <View style={styles.projectsBody}>
         <View style={styles.projectsTabs}>

@@ -1,14 +1,16 @@
 export const getScreenParent = route => {
   let parent;
-  let bottomTabStack = [
-    'Dashboard',
-    'Projects',
-    'Tasks',
-    'Calendar',
-    'Reports',
-  ];
+  let bottomTabStack = ['Dashboard', 'Projects', 'Contacts', 'Profile'];
 
-  let singleStack = ['Auth', 'Login', 'SignUp'];
+  let singleStack = [
+    'Onboarding',
+    'Login',
+    'SignUp',
+    'Chat',
+    'Reports',
+    'Calendar',
+    'Tasks',
+  ];
 
   if (bottomTabStack.includes(route)) {
     parent = 'BottomTabStack';

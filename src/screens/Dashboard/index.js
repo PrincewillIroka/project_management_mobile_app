@@ -35,6 +35,8 @@ export function Dashboard() {
             />
           </View>
         )}
+        isSearchBtnVisible={true}
+        isMoreBtnVisible={true}
       />
       <View style={styles.contentBody}>
         <View style={styles.statisticsSection}>

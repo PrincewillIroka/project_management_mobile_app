@@ -2,17 +2,25 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-export function TabScreenHeader({leftComponent}) {
+export function TabScreenHeader({
+  leftComponent,
+  isSearchBtnVisible,
+  isMoreBtnVisible,
+}) {
   return (
     <View style={styles.headerContainer}>
       {leftComponent()}
       <View style={styles.headerRightContainer}>
-        <TouchableOpacity>
-          <Feather name="search" size={22} color="#000" />
-        </TouchableOpacity>
-        <TouchableOpacity style={{marginLeft: 15}}>
-          <Feather name="more-vertical" size={22} color="#000" />
-        </TouchableOpacity>
+        {isSearchBtnVisible ? (
+          <TouchableOpacity>
+            <Feather name="search" size={22} color="#000" />
+          </TouchableOpacity>
+        ) : null}
+        {isMoreBtnVisible ? (
+          <TouchableOpacity style={{marginLeft: 15}}>
+            <Feather name="more-vertical" size={22} color="#000" />
+          </TouchableOpacity>
+        ) : null}
       </View>
     </View>
   );

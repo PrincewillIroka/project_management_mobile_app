@@ -3,7 +3,7 @@
 
 ### App User Interface
 
-<img src="https://i.imgur.com/ZXZ9LRv.gif" width="40" height="40" />
+<img src="https://cdn.dribbble.com/users/461127/screenshots/15225935/media/8dc1ca52586ea8c6b1d0c90cebd122bc.mp4" width="40" height="40" />
 
 ### Like this project?
 Don't forget to star :star2: this repo.

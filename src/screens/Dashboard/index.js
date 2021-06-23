@@ -128,11 +128,9 @@ export function Dashboard() {
             <ScrollView showsVerticalScrollIndicator={false}>
               <View style={styles.tasksList}>
                 {tasks?.length > 0 ? (
-                  tasks
-                    ?.slice(0, 3)
-                    ?.map(task => (
-                      <TaskInfo task={task} key={shortid.generate()} />
-                    ))
+                  tasks?.map(task => (
+                    <TaskInfo task={task} key={shortid.generate()} />
+                  ))
                 ) : (
                   <EmptyListComponent />
                 )}

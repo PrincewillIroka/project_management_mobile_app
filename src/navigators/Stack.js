@@ -46,6 +46,13 @@ function CustomTabBar(props) {
     return color;
   };
 
+  const handleBottomModal = bottomModal => {
+    dispatch({
+      type: 'toggleBottomModal',
+      payload: {bottomModal},
+    });
+  };
+
   return (
     <View style={styles.menuWrapper}>
       <View style={styles.menuContainer}>
@@ -59,7 +66,9 @@ function CustomTabBar(props) {
             color={getColor('Projects')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.plusBtnContainer}>
+        <TouchableOpacity
+          style={styles.plusBtnContainer}
+          onPress={() => handleBottomModal('CreateProject')}>
           <MaterialCommunityIcons name="plus" size={25} color="#fff" />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleNavigation('Members')}>

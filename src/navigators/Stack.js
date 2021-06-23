@@ -146,7 +146,7 @@ const SingleStack = () => {
 
 function AppStack() {
   return (
-    <Stack.Navigator initialRouteName="BottomStack">
+    <Stack.Navigator initialRouteName="SingleStack">
       <Stack.Screen
         name="SingleStack"
         component={SingleStack}

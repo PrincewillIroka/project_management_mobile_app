@@ -16,6 +16,7 @@
     "@react-navigation/stack": "^5.14.5",
     "react": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-dropdown-picker": "^3.8.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-paper": "^4.9.2",
     "react-native-popup-menu": "^0.15.11",

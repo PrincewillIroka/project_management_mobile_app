@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {View, SafeAreaView, TouchableOpacity, Modal} from 'react-native';
 import {CreateProject} from '../CreateProject';
+import {CreateTask} from '../CreateTask';
 import styles from './bottomModalContainerStyle';
 import {AuthContext} from '../../context';
 
@@ -22,7 +23,11 @@ export function BottomModalContainer() {
           style={styles.closeButton}
           onPress={() => handleBottomModal(null)}></TouchableOpacity>
         <View style={styles.setModalDimensions('70%', '100%')}>
-          {bottomModal === 'CreateProject' ? <CreateProject /> : null}
+          {bottomModal === 'CreateProject' ? (
+            <CreateProject />
+          ) : bottomModal === 'CreateTask' ? (
+            <CreateTask />
+          ) : null}
         </View>
       </SafeAreaView>
     </Modal>

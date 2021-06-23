@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 20,
+    zIndex: 10
   },
   tasksRow: {
     display: 'flex',

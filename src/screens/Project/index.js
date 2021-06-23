@@ -12,6 +12,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ProgressCircle from 'react-native-progress-circle';
 import shortid from 'shortid';
+import DropDownPicker from 'react-native-dropdown-picker';
 import styles from './projectStyle';
 import {TabScreenHeader, EmptyListComponent, TaskInfo} from '../../components';
 import {combineData} from '../../utils/DataHelper';
@@ -25,7 +26,14 @@ export function Project({navigation, route}) {
 
   const tabs = ['Task List', 'File', 'Comments'];
 
-  const [data, setData] = useState({activeTab: 'Task List'});
+  const [data, setData] = useState({
+    activeTab: 'Task List',
+    taskStatus: [
+      {label: 'All Tasks', value: 'All Tasks'},
+      {label: 'Ongoing', value: 'Ongoing'},
+      {label: 'Completed', value: 'Completed'},
+    ],
+  });
 
   const handleBackButton = () => {
     navigation?.goBack();
@@ -39,6 +47,15 @@ export function Project({navigation, route}) {
     const value = data?.activeTab === tab;
     return value;
   };
+
+  const handleCreateTask = () => {
+    dispatch({
+      type: 'toggleBottomModal',
+      payload: {bottomModal: 'CreateTask'},
+    });
+  };
+
+  const handleChangeTaskStatus = value => {};
 
   return (
     <SafeAreaView style={styles.container}>
@@ -124,7 +141,9 @@ export function Project({navigation, route}) {
                 {data?.activeTab === 'Task List' ? (
                   <View>
                     <View style={styles.tasksHeader}>
-                      <TouchableOpacity style={styles.tasksRow}>
+                      <TouchableOpacity
+                        style={styles.tasksRow}
+                        onPress={() => handleCreateTask()}>
                         <Text style={styles.tasksLeftText}>Add Task</Text>
                         <View style={styles.plusBtnContainer2}>
                           <MaterialCommunityIcons
@@ -134,14 +153,35 @@ export function Project({navigation, route}) {
                           />
                         </View>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.tasksRow}>
-                        <Text style={styles.tasksRightText}>All Task</Text>
-                        <MaterialIcons
-                          name="keyboard-arrow-down"
-                          size={19}
-                          color={appTheme.INACTIVE_COLOR}
-                        />
-                      </TouchableOpacity>
+                      <DropDownPicker
+                        placeholder="All Tasks"
+                        placeholderStyle={{color: appTheme.INACTIVE_COLOR}}
+                        items={data?.taskStatus || []}
+                        containerStyle={{
+                          width: 120,
+                          height: 40,
+                        }}
+                        style={{
+                          borderColor: 'transparent',
+                          backgroundColor: '#fafafa',
+                          zIndex: 10,
+                        }}
+                        itemStyle={{
+                          justifyContent: 'flex-start',
+                        }}
+                        dropDownStyle={{
+                          backgroundColor: '#fff',
+                          borderColor: 'transparent',
+                          zIndex: 10,
+                        }}
+                        arrowColor="gray"
+                        arrowSize={17}
+                        onChangeItem={item => handleChangeTaskStatus()}
+                        selectedLabelStyle={{color: 'gray'}}
+                        labelStyle={{
+                          fontSize: 15,
+                        }}
+                      />
                     </View>
                     {tasks?.map(task => (
                       <TaskInfo task={task} key={shortid.generate()} />

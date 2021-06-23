@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import shortid from 'shortid';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import DropDownPicker from 'react-native-dropdown-picker';
 import styles from './dashboardStyle';
 import {AuthContext} from '../../context';
 import {TabScreenHeader, TaskInfo, EmptyListComponent} from '../../components';
@@ -20,6 +20,22 @@ import appTheme from '../../constants/colors';
 export function Dashboard() {
   const {state, dispatch} = useContext(AuthContext);
   const {tasks} = state;
+  const [data, setData] = useState({
+    taskStatus: [
+      {label: 'All Tasks', value: 'All Tasks'},
+      {label: 'Ongoing', value: 'Ongoing'},
+      {label: 'Completed', value: 'Completed'},
+    ],
+  });
+
+  const handleChangeTaskStatus = value => {};
+
+  const handleCreateTask = () => {
+    dispatch({
+      type: 'toggleBottomModal',
+      payload: {bottomModal: 'CreateTask'},
+    });
+  };
 
   return (
     <SafeAreaView>
@@ -109,20 +125,41 @@ export function Dashboard() {
         </View>
         <View style={styles.tasksSection}>
           <View style={styles.tasksHeader}>
-            <TouchableOpacity style={styles.tasksRow}>
+            <TouchableOpacity
+              style={styles.tasksRow}
+              onPress={() => handleCreateTask()}>
               <Text style={styles.tasksLeftText}>Add Task</Text>
               <View style={styles.plusBtnContainer}>
                 <MaterialCommunityIcons name="plus" size={19} color="#fff" />
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.tasksRow}>
-              <Text style={styles.tasksRightText}>All Task</Text>
-              <MaterialIcons
-                name="keyboard-arrow-down"
-                size={19}
-                color={appTheme.INACTIVE_COLOR}
-              />
-            </TouchableOpacity>
+            <DropDownPicker
+              placeholder="All Tasks"
+              placeholderStyle={{color: appTheme.INACTIVE_COLOR}}
+              items={data?.taskStatus || []}
+              containerStyle={{
+                width: 120,
+                height: 40,
+              }}
+              style={{
+                borderColor: 'transparent',
+                backgroundColor: '#fafafa',
+              }}
+              itemStyle={{
+                justifyContent: 'flex-start',
+              }}
+              dropDownStyle={{
+                backgroundColor: '#fff',
+                borderColor: 'transparent',
+              }}
+              arrowColor="gray"
+              arrowSize={17}
+              onChangeItem={item => handleChangeTaskStatus()}
+              selectedLabelStyle={{color: 'gray'}}
+              labelStyle={{
+                fontSize: 15,
+              }}
+            />
           </View>
           <View style={styles.tasksBody}>
             <ScrollView showsVerticalScrollIndicator={false}>

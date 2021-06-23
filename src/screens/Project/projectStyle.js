@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     marginTop: 5,
+    zIndex: 20
   },
   tasksRow: {
     display: 'flex',
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     borderRadius: 50,
-    marginLeft: 7,
+    marginLeft: 5,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

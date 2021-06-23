@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity, Image} from 'react-native';
 import Illustration from '../../assets/illustration.png';
 import styles from './onboardingStyle';
 import {navigateToNestedRoute} from '../../navigators/RootNavigation';

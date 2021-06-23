@@ -140,10 +140,12 @@ export function Dashboard() {
               containerStyle={{
                 width: 120,
                 height: 40,
+                zIndex: 10,
               }}
               style={{
                 borderColor: 'transparent',
                 backgroundColor: '#fafafa',
+                zIndex: 10,
               }}
               itemStyle={{
                 justifyContent: 'flex-start',

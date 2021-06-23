@@ -214,6 +214,7 @@ const tasksState = {
       progress: 80,
     },
   ],
+  selectedTask: {},
 };
 
 export default tasksState;

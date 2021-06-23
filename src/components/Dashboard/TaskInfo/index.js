@@ -16,6 +16,11 @@ export function TaskInfo({task}) {
       type: 'toggleBottomModal',
       payload: {bottomModal: 'TaskView'},
     });
+
+    dispatch({
+      type: 'viewTask',
+      payload: {selectedTask: task},
+    });
   };
 
   return (

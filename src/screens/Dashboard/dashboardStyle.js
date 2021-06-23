@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   },
   tasksBody: {
     height: 220,
+    zIndex: -10
   },
   tasksList: {
     marginBottom: 50,

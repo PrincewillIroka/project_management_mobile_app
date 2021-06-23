@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import shortid from 'shortid';
 import styles from './createTaskStyle';
-import {combineData} from '../../utils/DataHelper';
-import {AuthContext} from '../../context';
+import {combineData} from '../../../utils/DataHelper';
+import {AuthContext} from '../../../context';
 
 export function CreateTask() {
   const {state, dispatch} = useContext(AuthContext);

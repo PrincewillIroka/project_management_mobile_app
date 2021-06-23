@@ -15,6 +15,8 @@ import styles from './profileStyle';
 import appTheme from '../../constants/colors';
 import {AuthContext} from '../../context';
 import {TabScreenHeader} from '../../components';
+import {navigateToNestedRoute} from '../../navigators/RootNavigation';
+import {getScreenParent} from '../../utils/NavigationHelper';
 
 export function Profile({navigation}) {
   const {state, dispatch} = useContext(AuthContext);
@@ -22,6 +24,10 @@ export function Profile({navigation}) {
 
   const handleBackButton = () => {
     navigation?.goBack();
+  };
+
+  const handleNavigation = (screen, params) => {
+    navigateToNestedRoute(getScreenParent(screen), screen, params);
   };
 
   return (
@@ -100,7 +106,8 @@ export function Profile({navigation}) {
                 style={[
                   styles.singleExplore,
                   {marginRight: 'auto', marginLeft: '7%'},
-                ]}>
+                ]}
+                onPress={() => handleNavigation('Onboarding')}>
                 <MaterialCommunityIcons
                   name="logout"
                   size={22}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, TouchableWithoutFeedback, Image} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -6,10 +6,20 @@ import {ProgressBar} from 'react-native-paper';
 import shortid from 'shortid';
 import styles from './taskInfoStyle';
 import appTheme from '../../../constants/colors';
+import {AuthContext} from '../../../context';
 
 export function TaskInfo({task}) {
+  const {state, dispatch} = useContext(AuthContext);
+
+  const handleBottomModal = () => {
+    dispatch({
+      type: 'toggleBottomModal',
+      payload: {bottomModal: 'TaskView'},
+    });
+  };
+
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={() => handleBottomModal()}>
       <View style={styles.container}>
         <AntDesign
           name="checksquareo"

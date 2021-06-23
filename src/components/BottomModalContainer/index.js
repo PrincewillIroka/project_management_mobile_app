@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {View, SafeAreaView, TouchableOpacity, Modal} from 'react-native';
-import {CreateProject} from '../CreateProject';
-import {CreateTask} from '../CreateTask';
+import {CreateProject} from '../Project';
+import {CreateTask, TaskView} from '../Task';
 import styles from './bottomModalContainerStyle';
 import {AuthContext} from '../../context';
 
@@ -27,6 +27,8 @@ export function BottomModalContainer() {
             <CreateProject />
           ) : bottomModal === 'CreateTask' ? (
             <CreateTask />
+          ) : bottomModal === 'TaskView' ? (
+            <TaskView />
           ) : null}
         </View>
       </SafeAreaView>

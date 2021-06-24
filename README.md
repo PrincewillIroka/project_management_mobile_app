@@ -1,9 +1,13 @@
 # Project Management mobile app built with ReactNative
 
 
-### App User Interface
+### App UI Mockup
 
 https://user-images.githubusercontent.com/26362657/123002066-5c83b000-d3a9-11eb-88ab-d72949d0cda0.mp4
+
+### App Screenshots
+
+![Mockup](https://https://imgur.com/gQEdod3.png)
 
 ### Like this project?
 Don't forget to star :star2: this repo.

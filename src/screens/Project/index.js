@@ -27,12 +27,28 @@ export function Project({navigation, route}) {
 
   const [data, setData] = useState({
     activeTab: 'Task List',
-    taskStatus: [
-      {label: 'All Tasks', value: 'All Tasks'},
-      {label: 'Ongoing', value: 'Ongoing'},
-      {label: 'Completed', value: 'Completed'},
-    ],
   });
+
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'All Tasks', value: 'All Tasks'},
+    {label: 'Ongoing', value: 'Ongoing'},
+    {label: 'Completed', value: 'Completed'},
+  ]);
+
+  const getTasks = () => {
+    let tasksToRender = [];
+    if (!value || value === 'All Tasks') {
+      tasksToRender = tasks;
+    } else if (value === 'Ongoing') {
+      tasksToRender = tasks.filter(task => task.progress < 100) || [];
+    } else if (value === 'Completed') {
+      tasksToRender = tasks.filter(task => task.progress === 100) || [];
+    }
+
+    return tasksToRender;
+  };
 
   const handleBackButton = () => {
     navigation?.goBack();
@@ -134,64 +150,59 @@ export function Project({navigation, route}) {
               </TouchableOpacity>
             ))}
           </View>
-          <View style={styles.bottomContainer}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={styles.bottomContent}>
-                {data?.activeTab === 'Task List' ? (
-                  <View>
-                    <View style={styles.tasksHeader}>
-                      <TouchableOpacity
-                        style={styles.tasksRow}
-                        onPress={() => handleCreateTask()}>
-                        <Text style={styles.tasksLeftText}>Add Task</Text>
-                        <View style={styles.plusBtnContainer2}>
-                          <MaterialCommunityIcons
-                            name="plus"
-                            size={19}
-                            color="#fff"
-                          />
-                        </View>
-                      </TouchableOpacity>
-                      <DropDownPicker
-                        placeholder="All Tasks"
-                        placeholderStyle={{color: appTheme.INACTIVE_COLOR}}
-                        items={data?.taskStatus || []}
-                        containerStyle={{
-                          width: 120,
-                          height: 40,
-                        }}
-                        style={{
-                          borderColor: 'transparent',
-                          backgroundColor: '#fafafa',
-                          zIndex: 10,
-                        }}
-                        itemStyle={{
-                          justifyContent: 'flex-start',
-                        }}
-                        dropDownStyle={{
-                          backgroundColor: '#fff',
-                          borderColor: 'transparent',
-                          zIndex: 10,
-                        }}
-                        arrowColor="gray"
-                        arrowSize={17}
-                        onChangeItem={item => handleChangeTaskStatus()}
-                        selectedLabelStyle={{color: 'gray'}}
-                        labelStyle={{
-                          fontSize: 15,
-                        }}
-                      />
-                    </View>
-                    {tasks?.map(task => (
+          {data?.activeTab === 'Task List' ? (
+            <>
+              <View style={styles.tasksHeader}>
+                <TouchableOpacity
+                  style={styles.tasksRow}
+                  onPress={() => handleCreateTask()}>
+                  <Text style={styles.tasksLeftText}>Add Task</Text>
+                  <View style={styles.plusBtnContainer2}>
+                    <MaterialCommunityIcons
+                      name="plus"
+                      size={19}
+                      color="#fff"
+                    />
+                  </View>
+                </TouchableOpacity>
+                <DropDownPicker
+                  placeholder="All Tasks"
+                  placeholderStyle={{fontSize: 15}}
+                  open={open}
+                  value={value}
+                  items={items}
+                  setOpen={setOpen}
+                  setValue={setValue}
+                  setItems={setItems}
+                  containerStyle={{
+                    width: 130,
+                  }}
+                  style={{
+                    borderColor: 'transparent',
+                    backgroundColor: 'transparent',
+                  }}
+                  dropDownContainerStyle={{
+                    backgroundColor: '#fff',
+                    borderColor: 'transparent',
+                  }}
+                  labelStyle={{
+                    fontSize: 15,
+                  }}
+                />
+              </View>
+              <View style={styles.bottomContainer}>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                  <View style={styles.bottomContent}>
+                    {getTasks()?.map(task => (
                       <TaskInfo task={task} key={shortid.generate()} />
                     ))}
                   </View>
-                ) : data?.activeTab === 'File' ? (
-                  <></>
-                ) : null}
+                </ScrollView>
               </View>
-            </ScrollView>
-          </View>
+            </>
+          ) : data?.activeTab === 'File' ? (
+            <></>
+          ) : null}
         </View>
       </View>
     </SafeAreaView>

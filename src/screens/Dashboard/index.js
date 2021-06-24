@@ -19,16 +19,29 @@ import appTheme from '../../constants/colors';
 
 export function Dashboard() {
   const {state, dispatch} = useContext(AuthContext);
-  const {tasks} = state;
-  const [data, setData] = useState({
-    taskStatus: [
-      {label: 'All Tasks', value: 'All Tasks'},
-      {label: 'Ongoing', value: 'Ongoing'},
-      {label: 'Completed', value: 'Completed'},
-    ],
-  });
+  let {tasks} = state;
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'All Tasks', value: 'All Tasks'},
+    {label: 'Ongoing', value: 'Ongoing'},
+    {label: 'Completed', value: 'Completed'},
+  ]);
 
-  const handleChangeTaskStatus = value => {};
+  const getTasks = () => {
+    let tasksToRender = [];
+    if (!value || value === 'All Tasks') {
+      tasksToRender = tasks;
+    } else if ((value === 'Ongoing')) {
+      tasksToRender =
+        tasks.filter(task => task.progress < 100) || [];
+    } else if ((value === 'Completed')) {
+      tasksToRender =
+        tasks.filter(task => task.progress === 100) || [];
+    }
+
+    return tasksToRender;
+  };
 
   const handleCreateTask = () => {
     dispatch({
@@ -135,29 +148,24 @@ export function Dashboard() {
             </TouchableOpacity>
             <DropDownPicker
               placeholder="All Tasks"
-              placeholderStyle={{color: appTheme.INACTIVE_COLOR}}
-              items={data?.taskStatus || []}
+              placeholderStyle={{fontSize: 15}}
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
               containerStyle={{
-                width: 120,
-                height: 40,
-                zIndex: 10,
+                width: 130,
               }}
               style={{
                 borderColor: 'transparent',
-                backgroundColor: '#fafafa',
-                zIndex: 10,
+                backgroundColor: 'transparent',
               }}
-              itemStyle={{
-                justifyContent: 'flex-start',
-              }}
-              dropDownStyle={{
+              dropDownContainerStyle={{
                 backgroundColor: '#fff',
                 borderColor: 'transparent',
               }}
-              arrowColor="gray"
-              arrowSize={17}
-              onChangeItem={item => handleChangeTaskStatus()}
-              selectedLabelStyle={{color: 'gray'}}
               labelStyle={{
                 fontSize: 15,
               }}
@@ -166,13 +174,9 @@ export function Dashboard() {
           <View style={styles.tasksBody}>
             <ScrollView showsVerticalScrollIndicator={false}>
               <View style={styles.tasksList}>
-                {tasks?.length > 0 ? (
-                  tasks?.map(task => (
-                    <TaskInfo task={task} key={shortid.generate()} />
-                  ))
-                ) : (
-                  <EmptyListComponent />
-                )}
+                {getTasks()?.map(task => (
+                  <TaskInfo task={task} key={shortid.generate()} />
+                ))}
               </View>
             </ScrollView>
           </View>

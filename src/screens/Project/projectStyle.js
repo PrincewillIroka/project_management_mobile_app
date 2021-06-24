@@ -119,19 +119,17 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     height: '65%',
-    paddingTop: 10,
   },
   bottomContent: {
-    paddingBottom: 50,
+    paddingBottom: 200,
   },
   tasksHeader: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
     marginTop: 5,
-    zIndex: 20
   },
   tasksRow: {
     display: 'flex',

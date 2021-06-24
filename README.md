@@ -7,7 +7,7 @@ https://user-images.githubusercontent.com/26362657/123002066-5c83b000-d3a9-11eb-
 
 ### App Screenshots
 
-![Mockup](https://https://imgur.com/gQEdod3.png)
+![App Screenshots](https://imgur.com/gQEdod3.png)
 
 ### Like this project?
 Don't forget to star :star2: this repo.

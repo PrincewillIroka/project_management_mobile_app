@@ -1,9 +1,13 @@
 # Project Management mobile app built with ReactNative
 
 
-### App User Interface
+### App UI Mockup
 
 https://user-images.githubusercontent.com/26362657/123002066-5c83b000-d3a9-11eb-88ab-d72949d0cda0.mp4
+
+### App Screenshots
+
+![App Screenshots](https://imgur.com/gQEdod3.png)
 
 ### Like this project?
 Don't forget to star :star2: this repo.
@@ -19,10 +23,7 @@ Don't forget to star :star2: this repo.
 
 👤 **Princewill Iroka**
 
-- Website: https://princewilliroka.com/
 - Twitter: [@PrincewillIroka](https://twitter.com/PrincewillIroka)
-- Github: [PrincewillIroka](https://github.com/PrincewillIroka)
-- LinkedIn: [Princewill Iroka](https://www.linkedin.com/in/princewill-iroka/)
 
 ### Credit
 UI designed by 👤 [Nurency](https://dribbble.com/shots/15225935-Task-Management-App)
